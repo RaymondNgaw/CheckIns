@@ -1,0 +1,30 @@
+library(leaflet)
+library(shiny)
+
+Bar_NYC <- NYC %>%
+  filter(venueCategory == "Bar")
+
+Home_NYC <- NYC %>%
+  filter(venueCategory == "Home (private)")
+
+Train_Tokyo <- Tokyo %>%
+  filter(venueCategory == "Train Station")
+
+Bar_NYCMap <- leaflet(Bar_NYC) %>% 
+  addTiles() %>%
+  setView(-73.935242, 40.730610, zoom = 10) %>% 
+  addCircles(~longitude, ~latitude) %>%
+  addMarkers(clusterOptions = markerClusterOptions())
+
+Home_NYCMap <- leaflet(Home_NYC) %>% 
+  addTiles() %>%
+  setView( -73.935242, 40.730610, zoom = 10) %>% 
+  addCircles(~longitude, ~latitude) %>%
+  addMarkers(clusterOptions = markerClusterOptions())
+
+Train_TokMap <- leaflet(Train_Tokyo) %>% 
+  addTiles() %>%
+  setView( 140, 35, zoom = 10) %>% 
+  addCircles(~longitude, ~latitude) %>%
+  addMarkers(clusterOptions = markerClusterOptions())
+  
