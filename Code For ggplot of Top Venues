@@ -1,3 +1,8 @@
+library(dplyr)
+library(ggplot2)
+NYC <- read.csv("dataset_TSMC2014_NYC.csv")
+Tokyo <- read.csv("dataset_TSMC2014_TKY.csv")
+
 Top_NYC <- NYC %>%
   group_by(venueCategory) %>%
   summarise(Total = n()) %>%
